@@ -1,3 +1,36 @@
+create table vote.vote_activity
+(
+    id                 bigint                                   not null comment 'id',
+    imgs               varchar(100)   default ''                not null comment '活动图片',
+    title              varchar(100)   default ''                not null comment '活动标题',
+    remark             varchar(200)   default ''                not null comment '备注',
+    share_count        bigint         default 0                 not null comment '分享次数',
+    ticket_count       bigint         default 0                 not null comment '票数',
+    popularity         bigint         default 0                 not null comment '人气',
+    sign_up_count      bigint         default 0                 not null comment '报名人数',
+    sign_up_start_time datetime                                 not null comment '报名开始时间',
+    sign_up_end_time   datetime                                 not null comment '报名结束时间',
+    vote_start_time    datetime                                 not null comment '投票开始时间',
+    vote_end_time      datetime                                 not null comment '投票结束时间',
+    real_browse        bigint         default 0                 not null comment '真实浏览',
+    total_amount       decimal(10, 2) default 0.00              not null comment '总金额',
+    today_amount       decimal(10, 2) default 0.00              not null comment '今日金额',
+    vote_rule          varchar(100)   default ''                not null comment '投票规则',
+    status             int            default 0                 not null comment '状态（0：关闭、1：结束、2：正常、3：投票）',
+    is_gift            int            default 1                 not null comment '是否开启送礼功能（0：关闭、1：开启）',
+    is_sign_up_review  int            default 1                 not null comment '是否开启报名审核（0：关闭、1：开启）',
+    is_sys_img         int            default 1                 not null comment '是否使用系统图片（0：关闭、1：开启）',
+    notice             varchar(500)   default ''                not null comment '公告内容',
+    introduction       varchar(500)   default ''                not null comment '活动介绍',
+    prize              varchar(500)   default ''                not null comment '活动奖品',
+    create_by          varchar(64)    default ''                not null comment '创建者',
+    create_time        datetime       default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '创建时间',
+    update_by          varchar(64)    default ''                not null comment '更新者',
+    update_time        datetime       default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    deleted            int            default 0                 not null comment '逻辑删除',
+    primary key (id)
+) comment '活动表' row_format = DYNAMIC;
+
 -- ----------------------------
 -- 2、用户信息表
 -- ----------------------------
