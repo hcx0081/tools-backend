@@ -16,6 +16,7 @@
         <servlet.version>4.0.0</servlet.version>
         <lombok.version>1.18.20</lombok.version>
         <spring-boot-starter.version>2.7.10</spring-boot-starter.version>
+        <mybatis-plus-boot-starter.version>3.5.0</mybatis-plus-boot-starter.version>
         <hutool.version>5.8.10</hutool.version>
     </properties>
     
@@ -55,7 +56,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.5.0</version>
+            <version>${mybatis-plus-boot-starter.version}</version>
         </dependency>
         <!-- JWT -->
         <dependency>

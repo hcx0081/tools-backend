@@ -23,6 +23,7 @@ create table vote.vote_activity
     notice             varchar(500)   default ''                not null comment '公告内容',
     introduction       varchar(500)   default ''                not null comment '活动介绍',
     prize              varchar(500)   default ''                not null comment '活动奖品',
+
     create_by          varchar(64)    default ''                not null comment '创建者',
     create_time        datetime       default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '创建时间',
     update_by          varchar(64)    default ''                not null comment '更新者',
@@ -51,6 +52,7 @@ create table sys_user
     del_flag    char(1)      default '0' comment '删除标志（0代表存在 2代表删除）',
     login_ip    varchar(128) default '' comment '最后登录IP',
     login_date  datetime comment '最后登录时间',
+
     create_by   varchar(64)  default '' comment '创建者',
     create_time datetime comment '创建时间',
     update_by   varchar(64)  default '' comment '更新者',

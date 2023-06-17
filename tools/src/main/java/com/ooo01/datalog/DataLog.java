@@ -1,9 +1,5 @@
 package com.ooo01.datalog;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.springframework.core.annotation.AliasFor;
-
 import java.lang.annotation.*;
 
 /**
@@ -13,26 +9,72 @@ import java.lang.annotation.*;
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DataLog {
-    @AliasFor("name")
-    OperationTypeEnum value() default OperationTypeEnum.OTHER;
+    OperationTypeEnum operationType() default OperationTypeEnum.OTHER;
     
-    @AliasFor("value")
-    OperationTypeEnum name() default OperationTypeEnum.OTHER;
+    OperatorTypeEnum operatorType() default OperatorTypeEnum.OTHER;
     
     String description() default "";
     
-    @AllArgsConstructor
-    @Getter
     enum OperationTypeEnum {
-        ADD("1", "新增"),
-        DELETE("2", "删除"),
-        UPDATE("3", "修改"),
-        QUERY("4", "查询"),
-        GRANT("5", "授权"),
-        IMPORT("6", "导入"),
-        EXPORT("7", "导出"),
-        OTHER("0", "其他");
-        private final String code;
-        private final String name;
+        /**
+         * 新增
+         */
+        INSERT,
+        /**
+         * 删除
+         */
+        DELETE,
+        /**
+         * 修改
+         */
+        UPDATE,
+        /**
+         * 查询
+         */
+        SELECT,
+        /**
+         * 授权
+         */
+        GRANT,
+        /**
+         * 导入
+         */
+        IMPORT,
+        /**
+         * 导出
+         */
+        EXPORT,
+        /**
+         * 强退
+         */
+        FORCE,
+        /**
+         * 生成代码
+         */
+        GEN,
+        /**
+         * 清空数据
+         */
+        CLEAN,
+        /**
+         * 其它
+         */
+        OTHER,
     }
+    
+    enum OperatorTypeEnum {
+        /**
+         * 后台用户
+         */
+        BACK,
+        /**
+         * 手机端用户
+         */
+        MOBILE,
+        /**
+         * 其它
+         */
+        OTHER,
+    }
+    
 }

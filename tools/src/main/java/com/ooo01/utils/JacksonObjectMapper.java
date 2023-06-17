@@ -19,28 +19,15 @@ import java.time.format.DateTimeFormatter;
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES;
 
 /**
- * 杰克逊对象映射器
  * {@code @Description:} 对象映射器:基于Jackson将Java对象转为JSON或将JSON转为Java对象
- * 从Java对象转换为JSON的过程称为：从Java对象序列化到JSON
- * 将JSON解析为Java对象的过程称为：从JSON反序列化Java对象
- *
- * @author Admin
- * @date 2023/06/14
+ * <p>从Java对象转换为JSON的过程称为：从Java对象序列化到JSON</p>
+ * <p>将JSON解析为Java对象的过程称为：从JSON反序列化Java对象</p>
  */
 public class JacksonObjectMapper extends ObjectMapper {
-    /**
-     * 默认日期时间格式
-     */
     public static final String DEFAULT_DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-    /**
-     * 默认日期格式
-     */
     public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
     public static final String DEFAULT_TIME_FORMAT = "HH:mm:ss";
     
-    /**
-     * 杰克逊对象映射器
-     */
     public JacksonObjectMapper() {
         super();
         // 收到未知属性时不报异常
