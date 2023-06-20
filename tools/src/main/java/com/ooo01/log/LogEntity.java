@@ -1,4 +1,4 @@
-package com.ooo01.datalog;
+package com.ooo01.log;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  * {@code @Description:} 数据日志记录实体类
  */
 @Data
-public class DataLogEntity {
+public class LogEntity {
     // 日志主键id
     private Long id;
     

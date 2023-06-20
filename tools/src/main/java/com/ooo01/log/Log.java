@@ -1,4 +1,4 @@
-package com.ooo01.datalog;
+package com.ooo01.log;
 
 import java.lang.annotation.*;
 
@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 @Documented
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DataLog {
+public @interface Log {
     OperationTypeEnum operationType() default OperationTypeEnum.OTHER;
     
     OperatorTypeEnum operatorType() default OperatorTypeEnum.OTHER;

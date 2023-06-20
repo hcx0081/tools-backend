@@ -1,4 +1,4 @@
-package com.ooo01.datalog;
+package com.ooo01.log;
 
 import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +30,7 @@ import java.util.concurrent.Executors;
 @Aspect
 @Component
 @Slf4j
-public class DataLogAspect {
+public class LogAspect {
     /**
      * 排除敏感属性字段
      */
@@ -51,7 +51,7 @@ public class DataLogAspect {
     }
     
     // 配置织入点
-    @Pointcut("@annotation(com.ooo01.datalog.DataLog)")
+    @Pointcut("@annotation(com.ooo01.log.Log)")
     public void logPointCut() {
     }
     
@@ -60,9 +60,9 @@ public class DataLogAspect {
      *
      * @param joinPoint 切点
      */
-    @AfterReturning(pointcut = "@annotation(dataLog)", returning = "jsonResult")
-    public void doAfterReturning(JoinPoint joinPoint, DataLog dataLog, Object jsonResult) {
-        handleLog(joinPoint, dataLog, null, jsonResult);
+    @AfterReturning(pointcut = "@annotation(log)", returning = "jsonResult")
+    public void doAfterReturning(JoinPoint joinPoint, Log log, Object jsonResult) {
+        handleLog(joinPoint, log, null, jsonResult);
     }
     
     /**
@@ -71,12 +71,12 @@ public class DataLogAspect {
      * @param joinPoint 切点
      * @param e         异常
      */
-    @AfterThrowing(value = "@annotation(dataLog)", throwing = "e")
-    public void doAfterThrowing(JoinPoint joinPoint, DataLog dataLog, Exception e) {
-        handleLog(joinPoint, dataLog, e, null);
+    @AfterThrowing(value = "@annotation(log)", throwing = "e")
+    public void doAfterThrowing(JoinPoint joinPoint, Log log, Exception e) {
+        handleLog(joinPoint, log, e, null);
     }
     
-    private void handleLog(final JoinPoint joinPoint, DataLog dataLog, final Exception e, Object jsonResult) {
+    private void handleLog(final JoinPoint joinPoint, Log log, final Exception e, Object jsonResult) {
         try {
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             HttpServletRequest request = attributes.getRequest();
@@ -84,8 +84,8 @@ public class DataLogAspect {
             DataLogEntity dataLogEntity = new DataLogEntity();
             // CustomUserDetails userDetails = UserInfoUtils.getUserInfo();
             dataLogEntity.setOperationTime(LocalDateTime.now());
-            dataLogEntity.setLogType(DataLog.OperationTypeEnum.OPERA.getCode());
-            dataLogEntity.setStatus(DataLog.OperationTypeEnum.SUCCESS.getCode());
+            dataLogEntity.setLogType(Log.OperationTypeEnum.OPERA.getCode());
+            dataLogEntity.setStatus(Log.OperationTypeEnum.SUCCESS.getCode());
             // if (userDetails != null) {
             //     dataLogEntity.setUserId(userDetails.getUserId());
             //     dataLogEntity.setUserName(userDetails.getUsername());
@@ -106,8 +106,8 @@ public class DataLogAspect {
             dataLogEntity.setRequestMethod(request.getMethod());
             dataLogEntity.setUrl(request.getRequestURI());
             
-            dataLogEntity.setOperationType(dataLog.value().getCode());
-            dataLogEntity.setDescription(dataLog.memo());
+            dataLogEntity.setOperationType(log.value().getCode());
+            dataLogEntity.setDescription(log.memo());
             
             // 获取参数的信息，传入到数据库中。
             setRequestValue(joinPoint, dataLogEntity, request);
@@ -129,16 +129,16 @@ public class DataLogAspect {
      * @param operLog 操作日志
      * @throws Exception 异常
      */
-    private void setRequestValue(JoinPoint joinPoint, DataLog dataLog, HttpServletRequest request) throws Exception {
+    private void setRequestValue(JoinPoint joinPoint, Log log, HttpServletRequest request) throws Exception {
         Map<String, String[]> map = request.getParameterMap();
         if (MapUtils.isNotEmpty(map)) {
             String params = JSONObject.toJSONString(map, excludePropertyPreFilter());
-            dataLog.setOperationParam(params);
+            log.setOperationParam(params);
         } else {
             Object args = joinPoint.getArgs();
             if (ObjectUtils.isNotEmpty(args)) {
                 String params = argsArrayToString(joinPoint.getArgs());
-                dataLog.setOperationParam(params);
+                log.setOperationParam(params);
             }
         }
     }
