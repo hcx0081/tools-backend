@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * {@code @Description:} 实体基类
+ * {@code @description:} 实体基类
  */
 public class BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;

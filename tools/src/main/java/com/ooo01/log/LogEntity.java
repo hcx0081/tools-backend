@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * {@code @Description:} 数据日志记录实体类
+ * {@code @description:} 数据日志记录实体类
  */
 @Data
 public class LogEntity {

@@ -3,7 +3,7 @@ package com.ooo01.log;
 import java.lang.annotation.*;
 
 /**
- * {@code @Description:} 数据日志记录注解
+ * {@code @description:} 数据日志记录注解
  */
 @Documented
 @Target({ElementType.METHOD, ElementType.TYPE})

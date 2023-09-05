@@ -1,6 +1,6 @@
 package com.ooo01.utils.file;
 
-import com.ooo01.entity.Result;
+import com.ooo01.entity.ControllerResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.StandardCharsets;
 
 /**
- * {@code @Description:}
+ * {@code @description:}
  */
 @Slf4j
 @Controller
@@ -28,7 +28,7 @@ public class FileController {
      */
     @PostMapping("/common/upload")
     @ResponseBody
-    public Result uploadFile(@RequestPart MultipartFile file) {
+    public ControllerResult uploadFile(@RequestPart MultipartFile file) {
         try {
             // 上传文件路径
             String filePath = "上传路径";
@@ -37,12 +37,12 @@ public class FileController {
             String url = "xxx" + fileName;
             
             
-            Result result = Result.success();
-            result.put("fileName", fileName);
-            result.put("url", url);
-            return result;
+            ControllerResult controllerResult = ControllerResult.success();
+            controllerResult.put("fileName", fileName);
+            controllerResult.put("url", url);
+            return controllerResult;
         } catch (Exception e) {
-            return Result.error(e.getMessage());
+            return ControllerResult.error(e.getMessage());
         }
     }
     

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 /**
- * {@code @Description:}
+ * {@code @description:}
  */
 @Component
 public class MyBatisPlusMetaObjectHandler implements MetaObjectHandler {

@@ -25,7 +25,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * {@code @Description:} 数据日志记录切面
+ * {@code @description:} 数据日志记录切面
  */
 @Aspect
 @Component
@@ -38,23 +38,23 @@ public class LogAspect {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final ThreadLocal<Long> startTime = new ThreadLocal<>();
     ExecutorService executorPool = Executors.newFixedThreadPool(10);
-    
+
     public static TimerTask recordOperationLog(final DataLogEntity dataLogEntity) {
         return new TimerTask() {
             @Override
             public void run() {
                 // SysOperaLogDomainService sysOperaLogDomainService = (SysOperaLogDomainService) SpringContextUtil.getBean(SysOperaLogDomainService.class);
                 // sysOperaLogDomainService.insertOperlog(operLog);
-                
+
             }
         };
     }
-    
+
     // 配置织入点
     @Pointcut("@annotation(com.ooo01.log.Log)")
     public void logPointCut() {
     }
-    
+
     /**
      * 处理完请求后执行
      *
@@ -64,7 +64,7 @@ public class LogAspect {
     public void doAfterReturning(JoinPoint joinPoint, Log log, Object jsonResult) {
         handleLog(joinPoint, log, null, jsonResult);
     }
-    
+
     /**
      * 拦截异常操作
      *
@@ -75,12 +75,12 @@ public class LogAspect {
     public void doAfterThrowing(JoinPoint joinPoint, Log log, Exception e) {
         handleLog(joinPoint, log, e, null);
     }
-    
+
     private void handleLog(final JoinPoint joinPoint, Log log, final Exception e, Object jsonResult) {
         try {
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             HttpServletRequest request = attributes.getRequest();
-            
+
             DataLogEntity dataLogEntity = new DataLogEntity();
             // CustomUserDetails userDetails = UserInfoUtils.getUserInfo();
             dataLogEntity.setOperationTime(LocalDateTime.now());
@@ -92,29 +92,29 @@ public class LogAspect {
             //     dataLogEntity.setDeptId(userDetails.getDeptId());
             //     dataLogEntity.setDeptName(userDetails.getDeptName());
             // }
-            
+
             if (e != null) {
                 // dataLogEntity.setStatus(EnumOperationStatus.FAIL.getCode());
                 // dataLogEntity.setErrorMsg(StringUtils.substring(e.getMessage(), 0, 2000));
             }
             // dataLogEntity.setIpAddress(IpUtils.getIpAddr(request));
             dataLogEntity.setHostName(request.getRemoteHost());
-            
+
             String className = joinPoint.getTarget().getClass().getName();
             String methodName = joinPoint.getSignature().getName();
             dataLogEntity.setMethod(className + "." + methodName + "()");
             dataLogEntity.setRequestMethod(request.getMethod());
             dataLogEntity.setUrl(request.getRequestURI());
-            
+
             dataLogEntity.setOperationType(log.value().getCode());
             dataLogEntity.setDescription(log.memo());
-            
+
             // 获取参数的信息，传入到数据库中。
             setRequestValue(joinPoint, dataLogEntity, request);
             if (jsonResult != null) {
                 dataLogEntity.setJsonResult(StringUtils.substring(JSON.toJSONString(jsonResult), 0, 2000));
             }
-            
+
             logger.info(controllerLog.memo());
             executorPool.execute(recordOperationLog(dataLogEntity));
         } catch (Exception ex) {
@@ -122,7 +122,7 @@ public class LogAspect {
             logger.error("操作日志插入错误");
         }
     }
-    
+
     /**
      * 获取请求的参数，放到log中
      *
@@ -142,14 +142,14 @@ public class LogAspect {
             }
         }
     }
-    
+
     /**
      * 忽略敏感属性
      */
     public PropertyPreFilters.MySimplePropertyPreFilter excludePropertyPreFilter() {
         return new PropertyPreFilters().addFilter().addExcludes(EXCLUDE_PROPERTIES);
     }
-    
+
     /**
      * 参数拼装
      */
@@ -168,7 +168,7 @@ public class LogAspect {
         }
         return params.trim();
     }
-    
+
     /**
      * 判断是否需要过滤的对象。
      *

@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES;
 
 /**
- * {@code @Description:} 对象映射器:基于Jackson将Java对象转为JSON或将JSON转为Java对象
+ * {@code @description:} 对象映射器:基于Jackson将Java对象转为JSON或将JSON转为Java对象
  * <p>从Java对象转换为JSON的过程称为：从Java对象序列化到JSON</p>
  * <p>将JSON解析为Java对象的过程称为：从JSON反序列化Java对象</p>
  */

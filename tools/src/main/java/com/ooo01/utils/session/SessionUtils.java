@@ -4,7 +4,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Enumeration;
 
 /**
- * {@code @Description:}
+ * {@code @description:}
  */
 public class SessionUtils {
     /**

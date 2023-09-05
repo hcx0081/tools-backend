@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * {@code @Description:} JWT工具类
+ * {@code @description:} JWT工具类
  */
 public class JWTUtils {
     public static final String SECRET = "qwertyuiop";
@@ -29,7 +29,7 @@ public class JWTUtils {
         claimMap.forEach(builder::withClaim);
         
         String jwt = builder.withExpiresAt(Date.from(LocalDateTime.now().plusDays(plusDays).atZone(ZoneId.systemDefault()).toInstant()))
-                .sign(Algorithm.HMAC256(SECRET));
+                            .sign(Algorithm.HMAC256(SECRET));
         return jwt;
     }
     

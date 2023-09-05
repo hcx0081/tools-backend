@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
- * {@code @Description:} Redis工具类
+ * {@code @description:} Redis工具类
  */
 @Component
 public class RedisUtils {

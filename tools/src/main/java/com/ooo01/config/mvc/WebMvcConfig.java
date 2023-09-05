@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.List;
 
 /**
- * {@code @Description:}
+ * {@code @description:}
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -22,12 +22,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
         InterceptorRegistration interceptor = registry.addInterceptor(new HandlerInterceptor() {
         });
         interceptor.addPathPatterns("/**")
-                // 放行登录功能
-                .excludePathPatterns("/employee/login", "/user/login")
-                // 放行静态资源
-                .excludePathPatterns("/backend/**", "/front/**")
-                // 放行接口文档
-                .excludePathPatterns("/doc.html", "/swagger-resources", "/webjars/**", "/v2/api-docs");
+                   // 放行登录功能
+                   .excludePathPatterns("/employee/login", "/user/login")
+                   // 放行静态资源
+                   .excludePathPatterns("/backend/**", "/front/**")
+                   // 放行接口文档
+                   .excludePathPatterns("/doc.html", "/swagger-resources", "/webjars/**", "/v2/api-docs");
     }
     
     @Override
