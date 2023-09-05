@@ -1,5 +1,9 @@
 package com.ooo01.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
 import java.io.Serializable;
@@ -8,7 +12,11 @@ import java.util.HashMap;
 /**
  * {@code @Description:} 返回结果
  */
-public class Result extends HashMap<String, Object> implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ControllerResult extends HashMap<String, Object> implements Serializable {
     // 状态码
     public static final String CODE = "code";
     // 响应消息
@@ -16,7 +24,7 @@ public class Result extends HashMap<String, Object> implements Serializable {
     // 响应数据
     public static final String DATA = "data";
     private static final long serialVersionUID = 1L;
-
+    
     /**
      * 结果
      *
@@ -24,7 +32,7 @@ public class Result extends HashMap<String, Object> implements Serializable {
      * @param msg    消息
      * @param data   数据
      */
-    public Result(Status status, String msg, Object data) {
+    public ControllerResult(Status status, String msg, Object data) {
         super.put(CODE, status.code);
         super.put(MSG, msg);
         super.put(DATA, data);
@@ -35,8 +43,8 @@ public class Result extends HashMap<String, Object> implements Serializable {
      *
      * @return 成功结果
      */
-    public static Result success() {
-        return Result.success("操作成功");
+    public static ControllerResult success() {
+        return ControllerResult.success("操作成功");
     }
     
     /**
@@ -45,8 +53,8 @@ public class Result extends HashMap<String, Object> implements Serializable {
      * @param msg 成功消息
      * @return 成功结果
      */
-    public static Result success(String msg) {
-        return new Result(Status.SUCCESS, msg, null);
+    public static ControllerResult success(String msg) {
+        return new ControllerResult(Status.SUCCESS, msg, null);
     }
     
     /**
@@ -55,8 +63,8 @@ public class Result extends HashMap<String, Object> implements Serializable {
      * @param data 成功数据
      * @return 成功结果
      */
-    public static Result success(Object data) {
-        return new Result(Status.SUCCESS, "操作成功", data);
+    public static ControllerResult success(Object data) {
+        return new ControllerResult(Status.SUCCESS, "操作成功", data);
     }
     
     /**
@@ -66,8 +74,8 @@ public class Result extends HashMap<String, Object> implements Serializable {
      * @param data 成功数据
      * @return 成功结果
      */
-    public static Result success(String msg, Object data) {
-        return new Result(Status.SUCCESS, msg, data);
+    public static ControllerResult success(String msg, Object data) {
+        return new ControllerResult(Status.SUCCESS, msg, data);
     }
     
     /**
@@ -75,8 +83,8 @@ public class Result extends HashMap<String, Object> implements Serializable {
      *
      * @return 失败结果
      */
-    public static Result error() {
-        return Result.error("操作失败");
+    public static ControllerResult error() {
+        return ControllerResult.error("操作失败");
     }
     
     /**
@@ -85,8 +93,8 @@ public class Result extends HashMap<String, Object> implements Serializable {
      * @param msg 失败消息
      * @return 失败结果
      */
-    public static Result error(String msg) {
-        return new Result(Status.ERROR, msg, null);
+    public static ControllerResult error(String msg) {
+        return new ControllerResult(Status.ERROR, msg, null);
     }
     
     /**
@@ -95,8 +103,8 @@ public class Result extends HashMap<String, Object> implements Serializable {
      * @param data 失败数据
      * @return 失败结果
      */
-    public static Result error(Object data) {
-        return new Result(Status.ERROR, "操作失败", data);
+    public static ControllerResult error(Object data) {
+        return new ControllerResult(Status.ERROR, "操作失败", data);
     }
     
     /**
@@ -106,8 +114,8 @@ public class Result extends HashMap<String, Object> implements Serializable {
      * @param data 失败数据
      * @return 失败结果
      */
-    public static Result error(String msg, Object data) {
-        return new Result(Status.ERROR, msg, data);
+    public static ControllerResult error(String msg, Object data) {
+        return new ControllerResult(Status.ERROR, msg, data);
     }
     
     /**
@@ -119,7 +127,7 @@ public class Result extends HashMap<String, Object> implements Serializable {
         // 错误：500 Internal Server Error
         ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value());
         private final int code;
-
+        
         Status(int code) {
             this.code = code;
         }
