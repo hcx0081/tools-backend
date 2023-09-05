@@ -8,7 +8,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * {@code @Description:}
+ * {@code @description:}
  */
 public class IpUtils {
     /**

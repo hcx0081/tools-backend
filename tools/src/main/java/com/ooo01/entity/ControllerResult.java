@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 /**
- * {@code @Description:} 返回结果
+ * {@code @description:} 返回结果
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

@@ -3,7 +3,7 @@ package com.ooo01.controller;
 import com.ooo01.entity.ControllerResult;
 
 /**
- * {@code @Description:} 控制层基类
+ * {@code @description:} 控制层基类
  */
 public class BaseController {
     /**
