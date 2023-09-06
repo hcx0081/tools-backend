@@ -126,9 +126,9 @@ public class ControllerResult extends HashMap<String, Object> implements Seriali
         SUCCESS(HttpStatus.OK.value()),
         // 错误：500 Internal Server Error
         ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        private final int code;
+        private final Integer code;
         
-        Status(int code) {
+        Status(Integer code) {
             this.code = code;
         }
     }
