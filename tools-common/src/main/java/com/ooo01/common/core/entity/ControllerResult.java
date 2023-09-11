@@ -1,6 +1,5 @@
 package com.ooo01.common.core.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -14,7 +13,6 @@ import java.util.HashMap;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class ControllerResult extends HashMap<String, Object> implements Serializable {
     // 状态码
