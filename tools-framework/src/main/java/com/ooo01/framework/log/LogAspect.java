@@ -14,12 +14,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * {@code @description:}
+ * {@code @description:} 日志切面类
  */
-
-@Component
-@Aspect
 @Slf4j
+@Aspect
+@Component
 public class LogAspect {
     @Pointcut("@within(org.springframework.stereotype.Controller)||@within(org.springframework.web.bind.annotation.RestController)")
     public void logPointCut() {
@@ -37,16 +36,16 @@ public class LogAspect {
         
         String classAndMethod = targetClass.getName() + "#" + method.getName();
         
-        log.info("开始调用 -> " + classAndMethod);
-        log.info("入参: " + objectMapper.writeValueAsString(getRequestParams(methodSignature, pjp)));
+        log.info("开始调用 -> 请求方法: {}", classAndMethod);
+        log.info("入参: {}", objectMapper.writeValueAsString(getRequestParams(methodSignature, pjp)));
         
         long start = System.currentTimeMillis();
         // 执行方法
         Object result = pjp.proceed();
         long end = System.currentTimeMillis();
         
-        log.info("出参: " + objectMapper.writeValueAsString(result));
-        log.info("结束调用 -> " + classAndMethod + ", 执行时长: " + (end - start) + "ms");
+        log.info("出参: {}", objectMapper.writeValueAsString(result));
+        log.info("结束调用 -> {}", classAndMethod + ", 执行时长: " + (end - start) + "ms");
         return result;
     }
     

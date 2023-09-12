@@ -5,3 +5,8 @@ server:
 spring:
   profiles:
     active: dev
+
+knife4j:
+  enable: true
+  openapi:
+    title: ooo01

@@ -82,5 +82,4 @@ public @interface Log {
          */
         OTHER,
     }
-    
 }
