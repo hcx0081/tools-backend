@@ -3,11 +3,11 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    
     <groupId>groupId</groupId>
     <artifactId>tools-backend</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    
     <packaging>pom</packaging>
     <modules>
         <module>tools-main</module>
@@ -15,14 +15,14 @@
         <module>tools-framework</module>
         <module>tools-business</module>
     </modules>
-
+    
     <properties>
         <ooo01.version>1.0-SNAPSHOT</ooo01.version>
-
+        
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
+        
         <servlet.version>4.0.0</servlet.version>
         <lombok.version>1.18.20</lombok.version>
         <spring-boot-starter.version>2.7.10</spring-boot-starter.version>
@@ -31,7 +31,7 @@
         <hutool.version>5.8.10</hutool.version>
         <knife4j.version>4.0.0</knife4j.version>
     </properties>
-
+    
     <dependencyManagement>
         <dependencies>
             <!-- Spring Boot 依赖 -->
@@ -79,8 +79,8 @@
                 <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
-
-
+            
+            
             <!-- 模块依赖 -->
             <dependency>
                 <groupId>com.ooo01</groupId>
@@ -90,6 +90,11 @@
             <dependency>
                 <groupId>com.ooo01</groupId>
                 <artifactId>tools-framework</artifactId>
+                <version>${ooo01.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ooo01</groupId>
+                <artifactId>tools-business</artifactId>
                 <version>${ooo01.version}</version>
             </dependency>
         </dependencies>

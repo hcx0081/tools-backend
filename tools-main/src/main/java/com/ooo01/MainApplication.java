@@ -20,10 +20,10 @@ public class MainApplication {
         ConfigurableApplicationContext ctx = SpringApplication.run(MainApplication.class, args);
         String ip = InetAddress.getLocalHost().getHostAddress();
         Environment environment = ctx.getBean(Environment.class);
-        String context = environment.getProperty("server.servlet.context-path");
         String port = environment.getProperty("server.port");
-        System.out.println("http://localhost:" + port + context + "/doc.html");
-        System.out.println("http://127.0.0.1:" + port + context + "/doc.html");
-        System.out.println("http://" + ip + ":" + port + context + "/doc.html");
+        String path = environment.getProperty("server.servlet.context-path");
+        System.out.println("http://localhost:" + port + path + "/doc.html");
+        System.out.println("http://127.0.0.1:" + port + path + "/doc.html");
+        System.out.println("http://" + ip + ":" + port + path + "/doc.html");
     }
 }

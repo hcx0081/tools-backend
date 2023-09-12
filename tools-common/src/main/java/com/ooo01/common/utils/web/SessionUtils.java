@@ -1,4 +1,4 @@
-package com.ooo01.common.utils.session;
+package com.ooo01.common.utils.web;
 
 import javax.servlet.http.HttpSession;
 import java.util.Enumeration;

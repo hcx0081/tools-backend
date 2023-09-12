@@ -1,6 +1,7 @@
 package com.ooo01.framework.log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ooo01.common.utils.web.ServletUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -36,16 +37,16 @@ public class LogAspect {
         
         String classAndMethod = targetClass.getName() + "#" + method.getName();
         
-        log.info("开始调用 -> 请求方法: {}", classAndMethod);
-        log.info("入参: {}", objectMapper.writeValueAsString(getRequestParams(methodSignature, pjp)));
+        log.info("\n开始调用:\n-> 请求方法: {}\n-> 请求URL: {}", classAndMethod, ServletUtils.getRequest().getRequestURL());
+        log.info("\n入参: {}", objectMapper.writeValueAsString(getRequestParams(methodSignature, pjp)));
         
         long start = System.currentTimeMillis();
         // 执行方法
         Object result = pjp.proceed();
         long end = System.currentTimeMillis();
         
-        log.info("出参: {}", objectMapper.writeValueAsString(result));
-        log.info("结束调用 -> {}", classAndMethod + ", 执行时长: " + (end - start) + "ms");
+        log.info("\n出参: {}", objectMapper.writeValueAsString(result));
+        log.info("\n结束调用:\n-> 请求方法: {}\n-> 执行时长: {}", classAndMethod, (end - start) + "ms");
         return result;
     }
     
