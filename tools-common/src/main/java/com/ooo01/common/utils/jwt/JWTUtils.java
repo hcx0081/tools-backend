@@ -29,7 +29,7 @@ public class JWTUtils {
         claimMap.forEach(builder::withClaim);
         
         String jwt = builder.withExpiresAt(Date.from(LocalDateTime.now().plusDays(plusDays).atZone(ZoneId.systemDefault()).toInstant()))
-                .sign(Algorithm.HMAC256(SECRET));
+                            .sign(Algorithm.HMAC256(SECRET));
         return jwt;
     }
     

@@ -1,5 +1,6 @@
-package com.ooo01.common.utils;
+package com.ooo01.framework.config.mvc;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
@@ -16,8 +17,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES;
-
 /**
  * {@code @description:} 对象映射器:基于Jackson将Java对象转为JSON或将JSON转为Java对象
  * <p>从Java对象转换为JSON的过程称为：从Java对象序列化到JSON</p>
@@ -31,10 +30,10 @@ public class JacksonObjectMapper extends ObjectMapper {
     public JacksonObjectMapper() {
         super();
         // 收到未知属性时不报异常
-        this.configure(FAIL_ON_UNKNOWN_PROPERTIES, false);
+        this.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         
         // 反序列化时，属性不存在的兼容处理
-        this.getDeserializationConfig().withoutFeatures(FAIL_ON_UNKNOWN_PROPERTIES);
+        this.getDeserializationConfig().withoutFeatures(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         
         SimpleModule simpleModule = new SimpleModule()
                 // 序列化
@@ -48,7 +47,7 @@ public class JacksonObjectMapper extends ObjectMapper {
                 .addDeserializer(LocalDate.class, new LocalDateDeserializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_FORMAT)))
                 .addDeserializer(LocalTime.class, new LocalTimeDeserializer(DateTimeFormatter.ofPattern(DEFAULT_TIME_FORMAT)));
         
-        // 注册功能模块：例如，可以添加自定义序列化器和反序列化器
+        // 注册功能模块：例如：可以添加自定义序列化器和反序列化器
         this.registerModule(simpleModule);
     }
 }

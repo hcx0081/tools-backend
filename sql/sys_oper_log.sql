@@ -1,4 +1,4 @@
-create table sys_operation_log
+create table sys_oper_log
 (
     id                 bigint auto_increment comment '操作日志id',
     title              varchar(50)   default '' null comment '模块标题',

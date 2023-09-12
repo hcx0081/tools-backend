@@ -1,4 +1,4 @@
-package com.ooo01.common.core.entity;
+package com.ooo01.common.core.domain;
 
 import com.ooo01.common.core.page.PageResp;
 import lombok.Data;

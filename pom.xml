@@ -13,6 +13,7 @@
         <module>tools-main</module>
         <module>tools-common</module>
         <module>tools-framework</module>
+        <module>tools-business</module>
     </modules>
 
     <properties>
@@ -33,6 +34,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Spring Boot 依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-starter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <!-- Servlet -->
             <dependency>
                 <groupId>javax.servlet</groupId>
@@ -45,14 +54,6 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <scope>compile</scope>
-            </dependency>
-            <!-- Spring Boot 依赖 -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot-starter.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
             </dependency>
             <!-- Mybatis-Plus -->
             <dependency>

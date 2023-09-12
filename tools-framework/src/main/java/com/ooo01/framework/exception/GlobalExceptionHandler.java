@@ -1,7 +1,7 @@
 package com.ooo01.framework.exception;
 
-import com.ooo01.framework.entity.ControllerResult;
-import com.ooo01.framework.exception.BusinessException;
+import com.ooo01.common.core.domain.ControllerResult;
+import com.ooo01.common.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
