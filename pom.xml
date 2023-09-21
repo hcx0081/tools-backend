@@ -23,8 +23,6 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         
-        <servlet.version>4.0.0</servlet.version>
-        <lombok.version>1.18.20</lombok.version>
         <spring-boot-starter.version>2.7.10</spring-boot-starter.version>
         <mybatis-plus-boot-starter.version>3.5.0</mybatis-plus-boot-starter.version>
         <jwt.version>4.2.0</jwt.version>
@@ -41,19 +39,6 @@
                 <version>${spring-boot-starter.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <!-- Servlet -->
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>${servlet.version}</version>
-            </dependency>
-            <!-- Lombok -->
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-                <scope>compile</scope>
             </dependency>
             <!-- Mybatis-Plus -->
             <dependency>
