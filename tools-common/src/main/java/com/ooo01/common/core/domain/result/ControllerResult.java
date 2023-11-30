@@ -1,4 +1,4 @@
-package com.ooo01.common.core.domain;
+package com.ooo01.common.core.domain.result;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

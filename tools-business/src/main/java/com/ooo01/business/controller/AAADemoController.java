@@ -1,7 +1,7 @@
 package com.ooo01.business.controller;
 
 import com.ooo01.business.service.AAADemoService;
-import com.ooo01.common.core.domain.ControllerResult;
+import com.ooo01.common.core.domain.result.ControllerResult;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

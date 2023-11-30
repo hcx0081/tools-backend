@@ -1,6 +1,6 @@
 package com.ooo01.common.core.controller;
 
-import com.ooo01.common.core.domain.ControllerResult;
+import com.ooo01.common.core.domain.result.ControllerResult;
 
 /**
  * {@code @description:} 控制层基类
