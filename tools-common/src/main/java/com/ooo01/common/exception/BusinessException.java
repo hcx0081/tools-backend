@@ -1,8 +1,18 @@
 package com.ooo01.common.exception;
 
+import cn.hutool.core.util.BooleanUtil;
+import cn.hutool.core.util.ObjUtil;
+import cn.hutool.core.util.StrUtil;
+import com.ooo01.common.core.domain.result.ControllerResult;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.hibernate.service.spi.ServiceException;
+
 /**
  * {@code @description:} 业务异常
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public final class BusinessException extends RuntimeException {
     // 错误码
     private Integer code;
@@ -26,19 +36,50 @@ public final class BusinessException extends RuntimeException {
         this.msg = msg;
     }
     
-    public Integer getCode() {
-        return code;
+    public static void exception(String errorMsgTemplate, Object... params) {
+        String logMsg = StrUtil.format(errorMsgTemplate, params);
+        throw new BusinessException(logMsg);
     }
     
-    public void setCode(Integer code) {
-        this.code = code;
+    /**
+     * 断言是否为true
+     *
+     * @param bool
+     * @param errorMsgTemplate
+     * @param params
+     */
+    public static void assertBoolean(Boolean bool, String errorMsgTemplate, Object... params) {
+        if (BooleanUtil.isFalse(bool)) {
+            String logMsg = StrUtil.format(errorMsgTemplate, params);
+            throw new BusinessException(logMsg);
+        }
     }
     
-    public String getMsg() {
-        return msg;
+    /**
+     * 断言是否为空
+     *
+     * @param object
+     * @param errorMsgTemplate
+     * @param params
+     */
+    public static void assertNotNull(Object object, String errorMsgTemplate, Object... params) {
+        if (ObjUtil.isNull(object)) {
+            String logMsg = StrUtil.format(errorMsgTemplate, params);
+            throw new ServiceException(logMsg);
+        }
     }
     
-    public void setMsg(String msg) {
-        this.msg = msg;
+    /**
+     * 断言结果是否失败
+     *
+     * @param result
+     * @param errorMsgTemplate
+     * @param params
+     */
+    public static void assertResult(ControllerResult result, String errorMsgTemplate, Object... params) {
+        if (result.isFail()) {
+            String logMsg = StrUtil.format(errorMsgTemplate, params);
+            throw new ServiceException(logMsg);
+        }
     }
 }

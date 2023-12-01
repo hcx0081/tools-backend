@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * {@code @description:} 分页结果
+ * {@code @description:} 分页返回结果
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
