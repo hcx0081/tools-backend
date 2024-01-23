@@ -1,4 +1,4 @@
-package com.ooo01.common.core.domain;
+package com.ooo01.common.core.domain.result;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -92,7 +92,7 @@ public class ControllerResult extends HashMap<String, Object> implements Seriali
      * @return 失败结果
      */
     public static ControllerResult error(String msg) {
-        return new ControllerResult(Status.ERROR, msg, null);
+        return new ControllerResult(Status.FAIL, msg, null);
     }
     
     /**
@@ -102,7 +102,7 @@ public class ControllerResult extends HashMap<String, Object> implements Seriali
      * @return 失败结果
      */
     public static ControllerResult error(Object data) {
-        return new ControllerResult(Status.ERROR, "操作失败", data);
+        return new ControllerResult(Status.FAIL, "操作失败", data);
     }
     
     /**
@@ -113,7 +113,25 @@ public class ControllerResult extends HashMap<String, Object> implements Seriali
      * @return 失败结果
      */
     public static ControllerResult error(String msg, Object data) {
-        return new ControllerResult(Status.ERROR, msg, data);
+        return new ControllerResult(Status.FAIL, msg, data);
+    }
+    
+    /**
+     * 判断是否成功
+     *
+     * @return true：成功、false：失败
+     */
+    public boolean isSuccess() {
+        return Status.SUCCESS == this.get(CODE);
+    }
+    
+    /**
+     * 判断是否失败
+     *
+     * @return true：失败、false：成功
+     */
+    public boolean isFail() {
+        return Status.SUCCESS != this.get(CODE);
     }
     
     /**
@@ -123,7 +141,8 @@ public class ControllerResult extends HashMap<String, Object> implements Seriali
         // 成功：200 SUCCESS
         SUCCESS(HttpStatus.OK.value()),
         // 错误：500 Internal Server Error
-        ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        FAIL(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        
         private final Integer code;
         
         Status(Integer code) {
