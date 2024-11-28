@@ -11,7 +11,7 @@ import java.util.Map;
  * {@code @description:} 实体基类
  */
 @Data
-public class BaseEntity implements Serializable {
+public class BaseModel implements Serializable {
     private static final long serialVersionUID = 1L;
     
     /**

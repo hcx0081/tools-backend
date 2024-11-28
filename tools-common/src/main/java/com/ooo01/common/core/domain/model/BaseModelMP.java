@@ -14,7 +14,7 @@ import java.util.Map;
  * {@code @description:} 实体基类（Mybatis-Plus）
  */
 @Data
-public class BaseEntityMP implements Serializable {
+public class BaseModelMP implements Serializable {
     private static final long serialVersionUID = 1L;
     
     /**
