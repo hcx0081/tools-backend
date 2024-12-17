@@ -41,6 +41,9 @@ public class BaseModelMP implements Serializable {
     @TableField(value = "update_Time", fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
     
+    /**
+     * 删除标志（0：未删除、1：已删除）
+     */
     @TableLogic
     @TableField(value = "del_flag")
     private Integer del_flag;
