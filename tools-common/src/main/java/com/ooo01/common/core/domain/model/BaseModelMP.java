@@ -18,6 +18,12 @@ public class BaseModelMP implements Serializable {
     private static final long serialVersionUID = 1L;
     
     /**
+     * 备注
+     */
+    @TableField(value = "remark")
+    private String remark;
+    
+    /**
      * 创建者
      */
     @TableField(value = "create_by", fill = FieldFill.INSERT) // 新增执行
@@ -46,7 +52,7 @@ public class BaseModelMP implements Serializable {
      */
     @TableLogic
     @TableField(value = "del_flag")
-    private Integer del_flag;
+    private Integer delFlag;
     
     /**
      * 请求参数
