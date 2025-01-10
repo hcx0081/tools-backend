@@ -4,13 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>groupId</groupId>
+        <groupId>com.ooo01</groupId>
         <artifactId>tools-backend</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     
-    <groupId>com.ooo01</groupId>
     <artifactId>tools-framework</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>tools-framework-mp</module>
+        <module>tools-framework-web</module>
+    </modules>
     
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
