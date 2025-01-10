@@ -1,4 +1,4 @@
-package com.ooo01.framework.config.mp.type;
+package com.ooo01.framework.config.type;
 
 import cn.hutool.core.collection.CollUtil;
 import com.ooo01.common.utils.string.StringUtils;

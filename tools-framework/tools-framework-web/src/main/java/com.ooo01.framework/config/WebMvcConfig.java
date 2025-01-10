@@ -1,4 +1,4 @@
-package com.ooo01.framework.config.mvc;
+package com.ooo01.framework.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;

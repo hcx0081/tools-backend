@@ -1,4 +1,4 @@
-package com.ooo01.framework.config.mp.handler;
+package com.ooo01.framework.config.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;

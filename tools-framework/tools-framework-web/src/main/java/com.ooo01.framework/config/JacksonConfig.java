@@ -1,4 +1,4 @@
-package com.ooo01.framework.config.mvc;
+package com.ooo01.framework.config;
 
 import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;

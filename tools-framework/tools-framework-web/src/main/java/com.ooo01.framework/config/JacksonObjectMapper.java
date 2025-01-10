@@ -1,4 +1,4 @@
-package com.ooo01.framework.config.mvc;
+package com.ooo01.framework.config;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
